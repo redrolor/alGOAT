@@ -27,12 +27,12 @@
                     <nav>
                         <a href = "/">
                             <img class="logo" href="/" src="{% static 'admin/img/A-removebg-preview 1.svg" />
-                            </a>
-
+                        </a>
                         <div class="links">
                             <a href="/about">About</a>
                             <a href="/selections">Selections</a>
-                            <button class="loginButton" href="/login">Login</a>
+                            <button class="loginButton" href="{% url 'login' %}">Login</button>
+                            <button class="loginButton" href="{% url 'signup' %}">Sign Up</button>
                         </div>
                     </nav>
                 </div>
