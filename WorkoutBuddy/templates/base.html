@@ -85,8 +85,12 @@
             <input type="hidden"/>
           </form>
          {% else %}
+         <li class="nav-item active">
          <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
+        </li>
+        <li class="nav-item active">
          <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+       </li>
         {% endif %}
         </li>
         <li class="nav-item active">
