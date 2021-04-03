@@ -88,11 +88,20 @@ nav {
     transition: var(--transition);
     border-radius: 20px;
 }
+.signInButton {
+    border: none;
+    background-color: var(--accent);
+    padding: 8px 25px;
+    transition: var(--transition);
+    border-radius: 20px;
+}
 
 .loginButton:hover {
     background-color: var(--accentHover);
 }
-
+.signInButton:hover {
+    background-color: var(--accentHover);
+}
 .info {
     grid-column: 3 / span 5;
 }
