@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+
+  <title>TigerGainz - Matches</title>
+
+</head>
+
+<div class="headerpic"><img src="https://cdn.discordapp.com/attachments/735319507341672642/737054723936485426/Matches_2.jpg" class="img.responsive" style="width:55%">
+</div>
+
+<body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+</body>
+
+<!--Compare Your Match Jumbotron-->
+
+<main role="main">
+  {% if matched_people %}
+  <div class="border-black">
+    <h1 class="display-5"><strong>Compare Your Match</strong></h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="jumbotron">
+    <div class="border-white">
+      <p class="lead">See if you and your match are compatible, then choose below!</p>
+      <hr class="my-4">
+
+      <div class="row mb-2">
+        {% for entry in matched_people %}
+        {% if forloop.counter0 > 3 %}
+        {% else %}
+        <div class="col-md">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <h3 class="mb-0">{{ entry.2 }}</h3>
+              <strong class="d-inline-block mb-2 text-primary">Residential College</strong>
+              <div class="mb-1 text-muted">{{entry.5}}</div>
+              <strong class="d-inline-block mb-2 text-primary">Time Zone</strong>
+              <div class="mb-1 text-muted">{{entry.9}}</div>
+              <strong class="d-inline-block mb-2 text-primary">Availability</strong>
+              <div class="mb-1 text-muted">{{entry.6}}</div>
+              <strong class="d-inline-block mb-2 text-primary">Workout Type</strong>
+              <div class="mb-1 text-muted">{{entry.8}}</div>
+              <strong class="d-inline-block mb-2 text-primary">Duration</strong>
+              <div class="mb-1 text-muted">{{entry.7}} Minutes</div>
+              <strong class="d-inline-block mb-2 text-primary">Location</strong>
+              <div class="mb-1 text-muted">{{entry.10}}</div>
+              <strong class="d-inline-block mb-2 text-primary">Intensity</strong>
+              <div class="mb-1 text-muted">{{entry.11}}</div>
+              <a href="javascript:{document.getElementById('partner_match{{entry.13}}').submit()}">
+                <button class="button btn-secondary btn-large btn-block">
+                  Accept
+                </button>
+              </a>
+
+              <form id="partner_match{{entry.10}}" action="{% url 'partner_match' entry.13 %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" />
+              </form>
+
+            </div>
+            <div class="col-auto d-none d-lg-block">
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        </div>
+        <p class="lead">Don't like these matches? Feel free to join the waiting list and manually look for
+        other students who more fit your preferences</p>
+        <hr class="my-4">
+        <div class="mb-1 text-muted">
+          <a href="javascript:{document.getElementById('database').submit()}">
+            <button class="btn btn-lg btn-secondary">
+              Join Waiting List
+            </button>
+          </a>
+
+          <form id="database" action="{% url 'database' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" />
+          </form>
+        </div>
+      {% else %}
+
+      <div class="border-black">
+        <h1 class="display-5"><strong>We Can't Find a Good Match Right Now</strong></h1>
+      </div>
+      <br />
+      <br />
+
+      <div class="jumbotron">
+        <div class="border-white">
+          <p class="lead">We'll be in touch with you when we find a good match.
+            For now, feel free to look through the waiting list to find a match manually.</p>
+          <hr class="my-4">
+          <div class="mb-1 text-muted">
+            <a href="javascript:{document.getElementById('database').submit()}">
+              <button class="btn btn-lg btn-secondary">
+                Waiting List
+              </button>
+            </a>
+
+            <form id="database" action="{% url 'database' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" />
+            </form>
+          </div>
+        </div>
+
+        {% endif %}
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        {% endblock %}

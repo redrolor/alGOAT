@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+
+  <title>TigerGainz - Waiting List</title>
+
+  <!--Page Stylesheet-->
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/DatabaseStyle.css' %}" />
+
+</head>
+
+<body>
+
+  <div class="headerpic"><img src="https://cdn.discordapp.com/attachments/735319507341672642/761996625165680640/Database.jpg" class="img.responsive" style="width:55%">
+  </div>
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  </body>
+
+
+  <!--TigerGainz Waiting List Jumbotron-->
+  <div class="border-black">
+    <h1 class="display-5"><strong>TigerGainz Waiting List</strong></h1>
+  </div>
+  <br />
+  <br />
+  {% load request_tags %}
+  {% if user|check_partner %}
+  {% else %}
+  <div class="jumbotron">
+    <div class="border-white">
+      <p class="lead">What Now?</p>
+      <hr class="my-4">
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+
+          <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi-small bi bi-person-lines-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                </svg>
+              </div>
+              <div class="text-center card-body d-flex flex-column align-items-start">
+                <p>Didn't get a match? Feel free to search through the waiting list below!</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi-small bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                  <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+              </div>
+              <div class="text-center card-body d-flex flex-column align-items-start">
+                <p>Found a match and want to be taken off the waiting list?
+                  Click the button below!</p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+          <a href="{% url 'remove_request' %}" class="btn btn-lg btn-secondary">Take me off the waiting list please!</a>
+          <br> <br>
+          <a href="{% url 'update_request' %}" class="btn btn-lg btn-secondary">Update my request form</a>
+          <br> <br>
+          <a href="{% url 'profile' user.id %}" class="btn btn-lg btn-secondary">View my request</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="border-black">
+    <h1 class="display-5"><strong>Profiles</strong></h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="jumbotron">
+    <div class="border-white">
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+          <!-- Filters !-->
+          <h1> <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+              <path
+                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+            </svg>Filter Profiles Based On:</h1>
+          <br />
+          <br />
+          <form action="{% url 'database' %}" method='POST'>
+            {% csrf_token %}
+            Workout Type:
+            <select id="workout_type_filter" name="workout_type_filter" class="form-control">
+              <option class="text-center" value={{workout_type_filter}}>SELECTED -- {{ workout_type_filter }} </option>
+              <option value="Lifting">Lifting</option>
+              <option value="Running">Running</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Biking">Biking</option>
+              <option value="Yoga/Pilates">Yoga/Pilates</option>
+              <option value="Calisthenics">Calisthenics</option>
+              <option value="">No Filter</option>
+            </select>
+            <br>
+            Duration:
+            <select name="duration_filter" class="form-control">
+              <option class="text-center" value={{duration_filter}}>SELECTED -- {{duration_filter }} </option>
+              <option class="text-center" value="30">30 Minutes</option>
+              <option class="text-center" value="60">60 Minutes</option>
+              <option class="text-center" value="90">90 Minutes</option>
+              <option class="text-center" value="120">120 Minutes</option>
+              <option class="text-center" value="120+">120+ Minutes</option>
+              <option value="">No Filter</option>
+            </select>
+            <br>
+            Timezone:
+            <select name="time_zone_filter" class="form-control">
+              <option class="text-center" value={{time_zone_filter}}>SELECTED -- {{ time_zone_filter }} </option>
+              <option class="text-center" value="EST">EST</option>
+              <option class="text-center" value="CST">CST</option>
+              <option class="text-center" value="MST">MST</option>
+              <option class="text-center" value="PST">PST</option>
+              <option class="text-center" value="AEST">AEST</option>
+              <option class="text-center" value="ACST">ACST</option>
+              <option class="text-center" value="AFT">AFT</option>
+              <option class="text-center" value="AKST">AKST</option>
+              <option class="text-center" value="AST">AST</option>
+              <option class="text-center" value="AWST">AWST</option>
+              <option class="text-center" value="CAT">CAT</option>
+              <option class="text-center" value="CET">CET</option>
+              <option class="text-center" value="EAT">EAT</option>
+              <option class="text-center" value="EET">EET</option>
+              <option class="text-center" value="MSK">MSK</option>
+              <option class="text-center" value="WAT">WAT</option>
+              <option class="text-center" value="WET">WET</option>
+              <option class="text-center" value="WAT">WAT</option>
+              <option value="">No Filter</option>
+            </select>
+            <br />
+            Location:
+            <select name="location_filter" class="form-control">
+              <option class="text-center" value={{location_filter}}>SELECTED -- {{ location_filter }} </option>
+              <option class="text-center" value="On Campus">On Campus</option>
+              <option class="text-center" value="Off Campus">Off Campus</option>
+              <option value="">No Filter</option>
+            </select>
+            <br />
+            <br />
+            <input class="btn btn-lg btn-secondary" type="submit" value="Filter Search">
+          </form>
+          <hr class="my-4">
+          <!--Profiles-->
+
+          <div class="row">
+            {% for entry in profiles %}
+            {% if forloop.counter0|divisibleby:2 %}
+            {% endif %}
+            <!-- Confirmation Pop-up -->
+            <div id="overlay{{entry.user_id}}">
+              <div class ="overlay" id="overlay">
+              <div id="text">
+                <div class="border-white">
+                  <div class="border-orange">
+                    <div class="jumbotron white-background">
+                      <p class="lead">Are You Sure You Want to Match?</p>
+                      <br>
+                      <p> Proceeding will result in <strong>you and your buddy receiving emails</strong> with each other's contact info.
+                      <strong>You will not be able to unmatch with this partner for 30 minutes.</strong></p>
+                      <button onclick="off()" class="btn btn-lg btn-secondary">
+                          Close
+                      </button>
+                      <a href="javascript:{document.getElementById('partner_match{{entry.user_id}}').submit()}">
+                        <button onclick="on()" class="btn btn-lg btn-secondary">
+                          Confirm
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="column">
+              <p class="lead">{{ entry.name }} ({{entry.year}})</p>
+              <div class="pic-container border-black">
+                <div class="jumbotron white-background">
+                  <img class="img-fluid" src="https://cdn.discordapp.com/attachments/735319507341672642/762013221007654942/Tiger_Profile_Pic.jpg">
+                  <!-- <img src="{{ entry.profile_picture }}" alt=""> -->
+                  <br />
+                  <br />
+                  <strong class="d-inline-block mb-2 text-primary">On/Off Campus</strong>
+                  <div class="mb-1 text-muted">
+                    <p>{{ entry.location }} </p>
+                  </div>
+                  <strong class="d-inline-block mb-2 text-primary">Duration</strong>
+                  <div class="mb-1 text-muted">
+                    <p>{{ entry.duration }} Minutes </p>
+                  </div>
+                  <strong class="d-inline-block mb-2 text-primary">Time Zone</strong>
+                  <div class="mb-1 text-muted">
+                    <p>{{ entry.time_zone }} </p>
+                  </div>
+                  <strong class="d-inline-block mb-2 text-primary">Availability</strong>
+                  <div class="mb-1 text-muted">
+                    <p>{{ entry.days }} </p>
+                  </div>
+                  <strong class="d-inline-block mb-2 text-primary">Workout Type</strong>
+                  <div class="mb-1 text-muted">
+                    <p>{{ entry.workout_type }} </p>
+                  </div>
+                  <br />
+                  <a href="{% url 'profile' entry.id %}" class="btn btn-lg btn-secondary">View Profile</a>
+                  {% load request_tags %}
+                  {% if user|check_partner %}
+                  {% else %}
+                  <button onclick="on()" class="btn btn-lg btn-secondary">
+                    Match
+                  </button>
+                  <form id="partner_match{{entry.user_id}}" action="{% url 'partner_match' entry.user_id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" />
+                  </form>
+                  {% endif %}
+                </div>
+              </div>
+              <hr class="my-4">
+            </div>
+            <!-- Script for Matching Pop-up -->
+            <script>
+              function on() {
+                console.log("test")
+                overlay = document.getElementById("overlay{{entry.user_id}}")
+                console.log("test")
+                overlay.getElementsByClassName("overlay")[0].style.display = "block";
+              }
+
+              function off() {
+                document.getElementById("overlay{{entry.user_id}}").style.display = "none";
+              }
+            </script>
+            {% endfor %}
+          </div>
+
+
+</body>
+{% endblock %}

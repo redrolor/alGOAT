@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+
+  <title>TigerGainz - Exercise Guide Page</title>
+
+  <!--Page Stylesheet-->
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/ExerciseGuideStyle.css' %}" />
+
+</head>
+
+<body>
+
+  <div class="headerpic"><img src="https://cdn.discordapp.com/attachments/735319507341672642/737054766630436904/Sprites.jpg" class="align-self-center" style="width:65%">
+  </div>
+
+  <!--Exercise Guide Page-->
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  </body>
+
+  <div class="border-black">
+    <h1 class="display-5"><strong>Exercise Guide</strong></h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="jumbotron">
+    <div class="border-white">
+      <p class="lead">Here some other exercises and a sample workout. These are only meant to be starting points and we hope you find the best variation that works for you! A few suggestions:
+      </p>
+      <hr class="my-4">
+
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+          <ul class="suggestions">
+          <li class="suggestion">We highly recommend that you check out Campus Rec’s fitness and wellness resources <a href="https://campusrec.princeton.edu/anytime-fitness-wellness-resources" class="links">here</a>, which include more fitness guides, videos, and
+            classes.</li>
+          <li class="suggestion">If you would like to submit/share your own exercises or workouts, please use <a href="https://forms.gle/TMTuFy4SnNdqnAxe9" class="links">this</a> google form. You can also email them to bccai@princeton.edu</li>
+          <li>As always, make sure to stay safe on- and off-campus! Remember to stretch!
+            Happy Exercising!</li>
+            </ul>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+
+
+          <p class="lead">Stretches</p>
+          <div class="pic-container border-black">
+            <div class="jumbotron white-background">
+              <div>
+                <li style="list-style-type: none">Standing Hamstring Stretch</li>
+                <li style="list-style-type: none">Tricep Stretch</li>
+                <li style="list-style-type: none"> Butterfly Stretch</li>
+                <li style="list-style-type: none">“Cat” Stretch</li>
+                <li style="list-style-type: none">“Snake”/”Sphinx” Stretch</li>
+                <li style="list-style-type: none">Standing Quad Stretch</li>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
+
+
+          <div class="row">
+            <div class="column">
+              <p class="lead">Abdominals</p>
+              <div class="pic-container border-black">
+                <div class="jumbotron white-background">
+                  <img class="img-fluid" src="https://cdn.discordapp.com/attachments/735319507341672642/736399322224001084/Sit_Up_Left.png">
+                  <div class="overlay">
+                    <div class="text">
+                      <li style="list-style-type: none">Front Planks</li>
+                      <li style="list-style-type: none">Side Planks</li>
+                      <li style="list-style-type: none">6-inch Leg Lifts</li>
+                      <li style="list-style-type: none">Sit-Ups</li>
+                      <li style="list-style-type: none">Crunches</li>
+                      <li style="list-style-type: none">“Penguins”</li>
+                      <li style="list-style-type: none">“Superman”</li>
+                      <li style="list-style-type: none">V-Ups</li>
+                      <li style="list-style-type: none">Russian Twists</li>
+                      <li style="list-style-type: none">Cross Mountain Climbers</li>
+                      <li style="list-style-type: none">Bicycle</li>
+                      <li style="list-style-type: none">Deadbug</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+            </div>
+
+            <div class="column">
+              <p class="lead">Upper Body</p>
+              <div class="pic-container border-black">
+                <div class="jumbotron white-background">
+                  <img class="img-fluid" src="https://cdn.discordapp.com/attachments/735319507341672642/736399209972105256/Push_Up_Left.png">
+                  <div class="overlay">
+                    <div class="text">
+                      <li style="list-style-type: none">Push-Ups</li>
+                      <li style="list-style-type: none">Burpee with Push-Ups</li>
+                      <li style="list-style-type: none">Push-Up/Plank Taps</li>
+                      <li style="list-style-type: none">Decline Push-Ups</li>
+                      <li style="list-style-type: none">Incline Push-Ups</li>
+                      <li style="list-style-type: none">Diamond Push-Ups</li>
+                      <li style="list-style-type: none">Dips</li>
+                      <li style="list-style-type: none">Tricep Dips</li>
+                      <li style="list-style-type: none">Curls with Weights</li>
+                      <li style="list-style-type: none">Bench Presses with Weights</li>
+                      <li style="list-style-type: none">Pull-Ups</li>
+                      <li style="list-style-type: none">Chin-Ups</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+            </div>
+
+            <div class="column">
+              <p class="lead">Lower Body</p>
+              <div class="pic-container border-black">
+                <div class="jumbotron white-background">
+                  <img class="img-fluid" src="https://cdn.discordapp.com/attachments/735319507341672642/736399153508253704/Lunge_Left.png">
+                  <div class="overlay">
+                    <div class="text">
+                      <li style="list-style-type: none">Squats</li>
+                      <li style="list-style-type: none">Forward Lunges</li>
+                      <li style="list-style-type: none">Reverse Lunges</li>
+                      <li style="list-style-type: none">Side Lunges</li>
+                      <li style="list-style-type: none">Step-Ups</li>
+                      <li style="list-style-type: none">Wall-Sit</li>
+                      <li style="list-style-type: none">Bulgarian Split Squat</li>
+                      <li style="list-style-type: none">High Knees</li>
+                      <li style="list-style-type: none">Calf-Raises</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+            </div>
+
+            <div class="column">
+              <p class="lead">Cardio</p>
+              <div class="pic-container border-black">
+                <div class="jumbotron white-background">
+                  <img class="img-fluid" src="https://cdn.discordapp.com/attachments/735319507341672642/736399255065067641/Running_Left.png">
+                  <div class="overlay">
+                    <div class="text">
+                      <li style="list-style-type: none">Long-Distance Continuous Running</li>
+                      <li style="list-style-type: none">Interval Running</li>
+                      <li style="list-style-type: none">Repeated Sprints</li>
+                      <li style="list-style-type: none">Biking</li>
+                      <li style="list-style-type: none">Swimming</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-black">
+    <h1 class="display-5"><strong>Creating an Exercise Set</strong></h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="jumbotron">
+    <div class="border-white">
+
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+          <div class="row">
+            <div class="column-2">
+              <p class="lead">Exercise Tips</p>
+              <hr class="my-4">
+              <div class="exercise-sets">
+                <p><strong>Stretch:</strong><br />To avoid injuries and reduce soreness, stretch before and after your
+                  workout. </p> <br />
+                <p><strong>Divide your days:</strong><br />Spread out your intensity and make sure you get enough rest. </p><br />
+                <p><strong>Challenge yourself but don’t overdo it:</strong><br />To not tire yourself at the beginning,
+                  start off at a moderate
+                  level
+                  and then build into it. </p> <br />
+                <p><strong>Vary it up:</strong><br />Make sure your workout has a variety of exercises to keep yourself
+                  engaged. <br />
+                  Alternate exercises to use different muscles and not tire yourself as quickly. </p> <br />
+                <p><strong>Repetition is key:</strong><br /> Doing shorter, repeated cycles is often more effective (and
+                  maybe a little more
+                  challenging) than doing one long set. </p><br />
+                <p><strong>Allow for recovery:</strong><br />Make sure you set aside time to rest between exercises, BUT
+                  don’t overextend your
+                  rest (a
+                  few seconds to half a minute is usually adequate). </p><br />
+                <p><strong>Adapt your workout:</strong><br />Your workout preferences will change, so adjust your workout
+                  accordingly. </p><br />
+                <p><strong>MOST IMPORTANTLY: FOLLOW YOUR WORKOUT, KEEP YOURSELF AND YOUR BUDDY OR GROUP ACCOUNTABLE. YOU CAN
+                    DO IT!</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="column-2">
+              <p class="lead">Sample Exercise Set</p>
+              <hr class="my-4">
+              <div class="exercise-sets">
+                <p><strong>STRETCHES + Abdominals + Upper Body + Lower Body</strong></p>
+                <p>Total Length: 30 Minutes (42 Minutes for Three Rounds) <br />
+                  Equipment: None <br />
+                  On- Or Off-Campus: Both <br /> </p>
+                <p><strong>1. STRETCHING:</strong></p>
+                <p>Standing Hamstring Stretch (30 seconds) <br />
+                  Tricep Stretch (15 seconds each arm) <br />
+                  “Cat” Stretch (30 seconds) <br />
+                  “Snake”/”Sphinx” Stretch (30 seconds) <br />
+                  Standing Quad Stretch (30 seconds) <br /> </p>
+                <p><strong>2. ABDOMINALS, UPPER-BODY, LOWER-BODY, CYLCLE:</strong> </p>
+                <p>Repeat 2 Times (3 Times if you want a CHALLENGE) </p>
+                <p>Front Planks (40 seconds, 20 seconds rest) <br />
+                  Squats (40 seconds, 20 seconds rest) <br />
+                  Push-Up/Plank Taps (40 seconds, 20 seconds rest) <br />
+                  6-inch Leg Lifts (40 seconds, 20 seconds rest) <br />
+                  Wall-Sit (40 seconds, 20 seconds rest) <br />
+                  Push-Ups (40 seconds, 20 seconds rest) <br />
+                  Sit-Ups (40 seconds, 20 seconds rest) <br />
+                  Reverse Lunges (40 seconds, 20 seconds rest) <br />
+                  Burpee with Push-Ups (40 seconds, 20 seconds rest) <br />
+                  Crunches (40 seconds, 20 seconds rest) <br />
+                  Forward Lunges (40 seconds, 20 seconds rest) <br />
+                  Tricep Dips (40 seconds, 20 seconds rest) <br /> </p>
+                <p> 1 Minute Break (DRINK WATER) <br /> </p>
+                <p><strong>3. STRETCHING:</strong></p>
+                <p>Standing Hamstring Stretch (30 seconds) <br />
+                  Tricep Stretch (15 seconds each arm) <br />
+                  “Cat” Stretch (30 seconds) <br />
+                  “Snake”/”Sphinx” Stretch (30 seconds) <br />
+                  Standing Quad Stretch (30 seconds)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+{% endblock %}

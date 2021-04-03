@@ -1,0 +1,43 @@
+.bi {
+  font-size: 800%;
+  color: #ff8d03;
+}
+
+.bi-small {
+  font-size: 500%;
+}
+
+.get-started a {
+  position: fixed;
+  right: 15px;
+  bottom: 0px;
+  transition: 0.3s;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  z-index: +2;
+}
+
+.pop-up-pics {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 381px) {
+  .big-screen {
+    display: none;
+  }
+  .get-started a {
+    width: 92vw;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 381.1px) {
+  .small-screen {
+    display: none;
+  }
+}

@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+  <title>TigerGainz - Partner Page</title>
+
+  <!--Page Stylesheets-->
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/PartnerStyle.css' %}" />
+
+</head>
+
+<body>
+
+  <div class="headerpic"><img src="https://cdn.discordapp.com/attachments/735319507341672642/737054723936485426/Matches_2.jpg" class="img.responsive" style="width:55%">
+  </div>
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  </body>
+
+  <!-- Confirmation Pop-up -->
+  <div id="overlay">
+    <div id="text">
+      <div class="border-white">
+        <div class="border-orange">
+          <div class="jumbotron white-background">
+            <p class="lead">Are You Sure You Want to Match?</p>
+            <br>
+            <p "proceeding"> Proceeding will result in <strong>you and your buddy receiving emails</strong> with each other's contact info.
+            <strong>You will not be able to unmatch with this partner for 30 minutes.</strong></p>
+            <button onclick="off()" class="btn btn-lg btn-secondary">
+              Close
+            </button>
+            <a href="javascript:{document.getElementById('partner_match').submit()}">
+              <button onclick="on()" class="btn btn-lg btn-secondary">
+                Confirm
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-black">
+    {% if profile_details.user_id == user.id %}
+    <h1 class="display-5"><strong>My Info</strong></h1>
+    {% else %}
+    <h1 class="display-5"><strong>Student Info</strong></h1>
+    {% endif %}
+  </div>
+
+  <div class="jumbotron">
+    <div class="border-white">
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+
+          <div class="column">
+            <div class="col p-4 d-flex flex-column position-static">
+              <p><strong class="d-inline-block mb-2 text-primary">Name:</strong> {{ profile_details.name }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">On/Off Campus:</strong> {{ profile_details.location }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Class:</strong> {{ profile_details.year }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Residential College:</strong> {{ profile_details.rescollege }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Timezone:</strong> {{ profile_details.time_zone }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Availability:</strong> {{ profile_details.days }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Workout Type:</strong> {{ profile_details.workout_type }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Intensity:</strong> {{ profile_details.intensity }}</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Duration:</strong> {{ profile_details.duration }} Minutes</p>
+              <p><strong class="d-inline-block mb-2 text-primary">Bio:</strong> {{ profile_details.bio }} </p>
+
+              </div>
+            </div>
+
+          <hr class="my-4">
+
+          {% load request_tags %}
+          {% if user|check_partner %}
+          {% if profile_details.user_id != user.id %}
+          {% if user|check_time %}
+          <a href="javascript:{document.getElementById('remove_partner').submit()}">
+            <button class="btn btn-lg btn-secondary">
+              Unmatch
+            </button>
+          </a>
+          <form id="remove_partner" action="{% url 'remove_partner' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" />
+          </form>
+          {% else %}
+          Cannot unmatch for 30 minutes
+          {% endif %}
+          {% endif %}
+
+          {% else %}
+          {% if profile_details.user_id != user.id %}
+          <a href="{% url 'database' %}">
+            <button class="btn btn-lg btn-secondary">
+              Return
+            </button>
+          </a>
+          <button onclick="on()" class="btn btn-lg btn-secondary">
+            Match
+          </button>
+          <form id="partner_match" action="{% url 'partner_match' profile_details.user_id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" />
+          </form>
+          {% else %}
+          <a href="{% url 'remove_request' %}" class="btn btn-lg btn-secondary">Take me off the waiting list please!</a>
+          <br>
+          <br>
+          <a href="{% url 'update_request' %}" class="btn btn-lg btn-secondary">Update my request form</a>
+          {% endif %}
+
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</body>
+
+<!-- Script for Matching Pop-up -->
+<script>
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+{% endblock %}

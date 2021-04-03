@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+
+  <title>TigerGainz - Home</title>
+
+  <!--Page Stylesheets-->
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/HomepageStyle.css' %}" />
+
+
+
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#myModal").modal('show');
+  });
+</script>
+
+<body>
+  <!--Popup-->
+  {% if user.is_authenticated %}
+  {% else %}
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">COVID-19 Reminder</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Welcome to TigerGainz</p>
+          <hr class="my-4">
+          <p>Princeton University’s Workout Buddy and Group Matchmaker</p>
+          <p>
+            Sign up now to find Your Princeton Workout Buddy or Group Today, On- Or Off-Campus! </p>
+          <hr class="my-4">
+          <p class="lead">COVID-19 REMINDER:</p>
+          <hr class="my-4">
+          <p>For the safety of others and your own, please follow all applicable COVID-19 safety regulations!
+          </p>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- Button at bottom right of page -->
+
+  <div class="get-started">
+    {% load base_tags %}
+    {% if user|check_partner %}
+    <a href="{% url 'partner' %}" class="btn btn-lg btn-secondary">See Partner Details</a>
+    {% elif user|check_requests %}
+    <a href="{% url 'database' %}" class="btn btn-lg btn-secondary">Check Out The Waiting List</a>
+    {% else %}
+    <a href="{% url 'find' %}" class="btn btn-lg btn-secondary">Fill Out A Find A Buddy Form</a>
+    {% endif %}
+  </div>
+
+  <div class="headerpic"><img src="https://cdn.discordapp.com/attachments/735319507341672642/735594203811151942/Logo.jpg" class="img.responsive" style="width:55%">
+  </div>
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  </body>
+
+  <!-- Button at top of page -->
+
+  <div class="border-orange">
+    <div class="jumbotron white-background">
+      {% load base_tags %}
+      {% if user|check_partner %}
+      <h1>Who Am I Paired With?</h1>
+      <h1 class="big-screen">→
+        <a href="{% url 'partner' %}" class="btn btn-lg btn-secondary">See Partner Details</a> ←</h1>
+      <h1 class="small-screen">
+        <a href="{% url 'partner' %}" class="btn btn-lg btn-secondary">See Partner Details</a>
+      </h1>
+      {% elif user|check_requests %}
+      <h1>Don't Have a Partner?</h1>
+      <h1 class="big-screen">→
+        <a href="{% url 'database' %}" class="btn btn-lg btn-secondary">Check Out The Waiting List</a> ←</h1>
+      <h1 class="small-screen">
+        <a href="{% url 'database' %}" class="btn btn-lg btn-secondary">Check Out The Waiting List</a>
+      </h1>
+      {% else %}
+      <h1>Get Started!</h1>
+      <h1 class="big-screen">→
+        <a href="{% url 'find' %}" class="btn btn-lg btn-secondary">Fill Out A Find A Buddy Form</a> ←</h1>
+      <h1 class="small-screen">
+        <a href="{% url 'find' %}" class="btn btn-lg btn-secondary">Fill Out A Find A Buddy Form</a>
+      </h1>
+      {% endif %}
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <!--What is TigerGainz?-->
+
+  <div class="border-black">
+    <h1 class="display-5"><strong>What is TigerGainz?</strong></h1>
+  </div>
+  <br />
+  <br />
+
+  <div class="jumbotron">
+    <div class="border-white">
+      <p class="lead">TigerGainz is a workout buddy and group matchmaker for Princetonians that:</p>
+      <hr class="my-4">
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+          <div class="row">
+            <div class="col-lg-4">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <rect width="4" height="5" x="1" y="10" rx="1" />
+                <rect width="4" height="9" x="6" y="6" rx="1" />
+                <rect width="4" height="14" x="11" y="1" rx="1" />
+              </svg>
+              <p><strong>Analyzes your workout preferences</strong></p>
+            </div>
+            <div class="col-lg-4">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+              </svg>
+              <p><strong>Finds Princetonians with the most FITTING workout preferences</strong></p>
+            </div>
+            <div class="col-lg-4">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
+              </svg>
+              <p><strong>Connects you with whoever you choose as your new workout buddy or group</strong>
+              </p>
+            </div>
+          </div>
+          <div>
+            <br />
+            <p><strong>TigerGainz does the hard work for you, removing the usual stress, uncertainty, and
+                awkwardness
+                of finding workout buddies and groups! </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <p class="lead">By finding the <b>best</b> workout buddies and groups, <b>TigerGainz</b> helps Princetonians
+        <i>stay
+          active</i> through <b>better
+          exercise experiences</b> that are:
+      </p>
+      <hr class="my-4">
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+          <div class="card flex-md-row mb-4 h-md-250">
+            <div>
+              <img style="display:inline-flex" width="300" height="300" src="https://cdn.discordapp.com/attachments/735319507341672642/736276124518318160/Side_Icon_Left.png">
+              </img>
+            </div>
+            <div class="list">
+              <p><b>- more consistent</b> because buddies and groups keep each other accountable</p>
+              <p><b>- of higher quality</b> since studies show that working out with others can
+                <i>increase the
+                  duration
+                  and
+                  intensity by up to 200% (Kansas State University)</i>
+              </p>
+              <p><b>- more fun,</b> whether you are on- or off-campus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br />
+  <div class="border-black">
+    <h1 class="display-5"><strong>How Does it Work?</strong></h1>
+  </div>
+  <br />
+  <br />
+  <div class="jumbotron">
+    <div class="border-white">
+      <p class="lead">Upon choosing and prioritizing your workout preferences,
+        TigerGainz’s algorithm will find the most fitting workout partners or groups from our waiting list of
+        participating Princetonians.
+      </p>
+      <hr class="my-4">
+      <div class="border-orange">
+        <div class="jumbotron white-background">
+          <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi-small bi-ui-checks" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z" />
+                  <path fill-rule="evenodd"
+                    d="M2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646l2-2a.5.5 0 1 0-.708-.708L2.5 4.293l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0zm0 8l2-2a.5.5 0 0 0-.708-.708L2.5 12.293l-.646-.647a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0z" />
+                  <path d="M7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z" />
+                  <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                </svg>
+              </div>
+              <div class="card-body d-flex flex-column align-items-start">
+                <p> By default, TigerGainz will ensure your matches have the same exercise type preference; the rest of your preferences will be weighted according to the rank you assigned them in the form (Note: the weighted questions feature is
+                  still being developed).
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi-small bi-people-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                </svg>
+              </div>
+              <div class="card-body d-flex flex-column align-items-start">
+                <p>Once matches have been made, you will see the profiles of your best potential workout buddies or groups. All of this can also be viewed in the “Matches” section. Then you can choose one of your matches. This will send an email to
+                  you and your partner confirming the match. Now, you can start working out together! If you do not like any of your matches you can click the “Put me on the Waitlist” button; please see below for more instructions.
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi-small bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                </svg>
+              </div>
+              <div class="card-body d-flex flex-column align-items-start">
+                <p>If they accept, then both of you will receive a confirmation email and you guys can get
+                  started. This
+                  will
+                  also remove both of you from the waiting list.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi-small bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                  <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                </svg>
+              </div>
+              <div class="card-body d-flex flex-column align-items-start">
+                <p>If they decline, you will receive a notification, and you will have the options of choosing
+                  another one
+                  of
+                  your matches, resubmitting the form (you must remove yourself from the waiting list before doing
+                  this),
+                  searching the directory, waiting for someone to request you, or removing yourself from the
+                  waiting list.</p>
+              </div>
+            </div>
+          </div> -->
+          <div>
+            <div class="card flex-md-row mb-4 h-md-250">
+              <div>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi-small bi-collection-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7z" />
+                  <path fill-rule="evenodd" d="M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
+                </svg>
+              </div>
+              <div class="card-body d-flex flex-column align-items-start">
+                <p>If you do not get any matches, you will be automatically put on the waiting list. Then you can resubmit the form, search the directory, wait for someone to match with you, or remove yourself from the waiting list. To remove
+                  yourself from the waiting list, please go to the Waiting List section and click the “Take me off the waiting list please” button.</p>
+              </div>
+            </div>
+          </div>
+          <p>Be on the lookout for <a class="links" data-toggle="modal" href="#myModal1">these emails</a> from
+            no.reply.tigergainz@gmail.com</p>
+          <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal1" role="dialog">
+              <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <img width="100%" height="50%" class="pop-up-pics" src="https://cdn.discordapp.com/attachments/735319507341672642/737041162224795678/Email.JPG">
+                  </img>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <!-- <div class="panel-heading">
+        <button type="button" class="btn btn-lg btn-secondary" data-toggle="collapse" data-target="#collapse1">Click to See Process</button>
+      </div> -->
+      <!-- <div id="collapse1" class="panel-collapse collapse"> -->
+      <div class="border-black">
+        <h1 class="display-5">Process</h1>
+      </div>        <br />
+        <img width="100%" height="100%" class="pop-up-pics" src="https://cdn.discordapp.com/attachments/733383636157726721/796984713330819103/Screen_Shot_2021-01-08_at_1.11.33_AM.png">
+        </img>
+      <!-- </div> -->
+    </div>
+  </div>
+</body>
+
+{% endblock %}
