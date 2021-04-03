@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ['localhost']
 INSTALLED_APPS = [
     'buddyrequest.apps.BuddyrequestConfig',
     'accounts.apps.AccountsConfig',
-    'uniauth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,12 +55,9 @@ MIDDLEWARE = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'uniauth.backends.CASBackend',
 ]
 
 LOGIN_URL = "/accounts/login/"
-UNIAUTH_LOGIN_DISPLAY_STANDARD = False
-UNIAUTH_LOGOUT_CAS_COMPLETELY = True
 ROOT_URLCONF = 'WorkoutBuddy.urls'
 
 TEMPLATES = [

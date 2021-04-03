@@ -117,7 +117,6 @@ def matches(request):
         #     if entry['partner_id'] != None:
         #         print('in if statement')
         #         requestsList.remove()
-        netID = request.user.uniauth_profile.get_display_id()
         for entry in requestsList:
             if netID == entry['netID']:
                 print("Problem here")
