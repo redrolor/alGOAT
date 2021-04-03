@@ -76,18 +76,18 @@
         </li>
         <li class="nav-item active">
           {% if user.is_authenticated %}
-            {% load base_tags %}
-            {% if user|check_requests %}
-              <a class="nav-link dropdown-item" href="{% url 'profile' user.id %}">My Request Details</a>
-              {% if user|check_partner %}
-                <a class="nav-link" href="{% url 'partner' %}">Partner</a>
-              {% else %}
-                <a class="nav-link dropdown-item" href="{% url 'database' %}">Waiting List</a>
-              {% endif %}
-            {% endif %}
-          {% else %}
-            <a class="nav-item nav-link dropdown-item" href="{% url  %}">Log In</a>
-          {% endif %}
+          <a class="nav-item nav-link" href="{% url 'cart' %}">
+            <span class="iconic iconic-arrow-thick-right-line" title="arrow thick right line" aria-hidden="true">Shopping List</span>
+          </a>
+          <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onClick="">Log Out</a>
+          <form id="logout" action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden"/>
+          </form>
+         {% else %}
+         <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
+         <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+        {% endif %}
         </li>
         <li class="nav-item active">
           <a class="nav-link dropdown-item" href="{% url 'about' %}">About & FAQ</a>
