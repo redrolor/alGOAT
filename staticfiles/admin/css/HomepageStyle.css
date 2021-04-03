@@ -1,3 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+:root {
+    --accent: #EA918D;
+    --accentHover: #DE8A86;
+    --dark: #304659;
+    --dark80: rgba(48,70,89,0.8);
+    --dark60: rgba(48,70,89,0.6);
+    --light: #F5F9FC;
+    --transition: all 0.3s ease 0s;
+    --black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: auto;
+}
+
+body {
+    background-image: url("staticfiles\admin\img\home-bg.4f18e6dc.svg");
+    background-repeat: no-repeat,repeat;
+    background-size: 1750px;
+    background-position: bottom;
+    background-color: #F5F9FC;
+}
+
+p, a, button {
+    font-family: "Lato", sans-serif;
+    color: var(--black);
+    text-decoration: none;
+}
+
+a, button, .logo {
+    cursor: pointer;
+}
+
+main {
+    height:100%;
+    display: grid;
+    grid-template-columns: minmax(60px, 1fr) repeat(6, minmax(50px, 190px)) minmax(60px, 1fr);
+    grid-template-rows: 25% 100px auto;
+}
+
+.bar {
+    grid-template-columns: minmax(60px, 1fr) repeat(6, minmax(50px, 190px)) minmax(60px, 1fr);
+    grid-template-rows: 25% 100px;
+}
+
+header {
+    grid-column: 2 / span 6;
+}
+
+nav {
+    display:flex;
+    align-items: center;
+    height: 120px;
+    padding-top: 300;
+}
+
+.links {
+    margin-left: auto;
+}
+
+.links a, .links button {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.links a {
+    margin-right: 50px;
+}
+
+.links a:hover {
+    color: var(--accent);
+}
+
+.loginButton {
+    border: none;
+    background-color: var(--accent);
+    padding: 8px 25px;
+    transition: var(--transition);
+    border-radius: 20px;
+}
+
+.loginButton:hover {
+    background-color: var(--accentHover);
+}
+
+.info {
+    grid-column: 3 / span 5;
+}
+.hero__font {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 4.375rem;
+}
+
+.start {
+    border: none;
+    background-color: var(--accent);
+    padding: 12px 75px;
+    margin-top: 20px;
+    transition: var(--transition);
+    border-radius: 20px;
+}
+
+.start:hover {
+    background-color: var(--accentHover);
+}
 .bi {
   font-size: 800%;
   color: #ff8d03;
