@@ -31,8 +31,13 @@
                         <div class="links">
                             <a href="/about">About</a>
                             <a href="/selections">Selections</a>
-                            <button class="loginButton" href="{% url 'login' %}">Login</button>
-                            <button class="signInButon" href="{% url 'signup' %}">Sign Up</button>
+                            <button class="loginButton">Login
+                            <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+                            </button>
+                            
+                            <button class="signUpButton">
+                            <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
+                            </button>
                         </div>
                     </nav>
                 </div>

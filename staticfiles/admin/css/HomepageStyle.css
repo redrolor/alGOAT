@@ -88,7 +88,7 @@ nav {
     transition: var(--transition);
     border-radius: 20px;
 }
-.signInButton {
+.signUpButton {
     border: none;
     background-color: var(--accent);
     padding: 8px 25px;
@@ -99,7 +99,7 @@ nav {
 .loginButton:hover {
     background-color: var(--accentHover);
 }
-.signInButton:hover {
+.signUpButton:hover {
     background-color: var(--accentHover);
 }
 .info {
