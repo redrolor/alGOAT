@@ -1,6 +1,5 @@
 <<!DOCTYPE html>
-<html lang="en" dir="ltr">
-{% load static %}
+{% extends 'base.html' %}{% load static %}
 
 <head>
   <meta charset="utf-8">
@@ -26,19 +25,13 @@
                 <div class = "bar">
                     <nav>
                         <a href = "/">
-                            <img class="logo" href="/" src="{% static 'admin/img/A-removebg-preview 1.svg" />
+                            <img class="logo" src="{% static 'admin/img/A-removebg-preview 1.svg' />
                         </a>
-                        <div class="links">
+                          <div class="links">
                             <a href="/about">About</a>
-                            <a href="/selections">Selections</a>
-                            <button class="loginButton">Login
+                            <a href="/selections"> Selections</a>
                             <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
-                            </button>
-                            
-                            <button class="signUpButton">
                             <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
-                            </button>
-                        </div>
                     </nav>
                 </div>
 
